@@ -28,7 +28,7 @@ app.use("/api/leaderboard",leaderRoute)
 
 
 
-app.listen(3000, async ()=>{
+app.listen(process.env.PORT || 3000 , async ()=>{
   await connectDB();
   console.log(`server running at port 3000`)
 })
