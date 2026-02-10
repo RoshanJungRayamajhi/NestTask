@@ -6,6 +6,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 const {connectDB} = require("./config/db")
+  await connectDB();
+
+
+
 const saleRoute = require("./routes/sales.routes")
 const leaderRoute = require("./routes/leader.routes")
 
@@ -29,6 +33,5 @@ app.use("/api/leaderboard",leaderRoute)
 
 
 app.listen(process.env.PORT || 3000 , async ()=>{
-  await connectDB();
   console.log(`server running at port 3000`)
 })
