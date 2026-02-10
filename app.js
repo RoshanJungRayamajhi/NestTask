@@ -6,7 +6,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 const {connectDB} = require("./config/db")
-  await connectDB();
+connectDB();
 
 
 
