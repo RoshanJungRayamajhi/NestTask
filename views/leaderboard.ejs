@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Today's Leaderboard</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      padding: 30px;
+    }
+
+    .btn{
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      padding:12px;
+      background-color: black ;
+      text-align: center;
+      font-weight: 400;
+      color:white;
+      font-family: Arial, Helvetica, sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .header h2 {
+      font-size: 22px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary {
+      font-size: 15px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    /* Leader Card */
+    .leader-card {
+      background: #2563eb;
+      color: white;
+      padding: 18px 20px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .leader-card:hover {
+      transform: scale(1.01);
+    }
+
+    .leader-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .leader-rank {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .leader-stats {
+      font-size: 14px;
+      opacity: 0.9;
+      display: flex;
+      gap: 15px;
+    }
+
+    .leader-right {
+      font-size: 20px;
+      opacity: 0.8;
+    }
+
+    /* Different background for non-top ranks */
+    .normal-card {
+      background: white;
+      color: black;
+      border: 1px solid #ddd;
+    }
+
+    .normal-card .leader-stats {
+      color: #555;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+   <a href="/add-form" class="btn">To Add Sell</a>
+    <!-- Header -->
+    <div class="header">
+      <h2>📊 Today's Leaderboard</h2>
+
+      <!-- Summary -->
+      <div class="summary">
+        Total Sales: <%= totalSales %> |
+        Total Amount: Rs. <%= totalAmount %>
+      </div>
+    </div>
+
+    <!-- Leaderboard Cards -->
+    <% leaderboard.forEach(agent => { %>
+
+      <div class="leader-card <%= agent.rank === 1 ? '' : 'normal-card' %>">
+
+        <!-- Left Side -->
+        <div class="leader-left">
+          <div class="leader-rank">
+            #<%= agent.rank %> <%= agent.agentName %>
+          </div>
+
+          <div class="leader-stats">
+            <span>📄 <%= agent.totalSales %> sales</span>
+            <span>💰 Rs. <%= agent.totalAmount %></span>
+          </div>
+        </div>
+
+        <!-- Right Side Icon -->
+        <div class="leader-right">
+          ⌄
+        </div>
+
+      </div>
+
+    <% }) %>
+
+  </div>
+</body>
+</html>

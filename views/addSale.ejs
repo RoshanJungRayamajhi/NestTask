@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Sales Record</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      padding: 30px;
+    }
+
+    .form-container {
+      width: 400px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px gray;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: green;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <h2>➕ Add Sales Record</h2>
+
+    <form action="api/sales/add" method="POST">
+
+      <!-- Agent Name -->
+      <label>Agent Name:</label>
+      <input type="text" name="agentName" placeholder="Enter agent name" required>
+
+      <!-- Amount -->
+      <label>Amount Sold:</label>
+      <input type="number" name="amount" placeholder="Enter amount" required>
+
+      <!-- Sales Count -->
+      <label>Sales Count:</label>
+      <input type="number" name="salesCount" placeholder="Enter number of sales" required>
+
+      <!-- Submit -->
+      <button type="submit">Submit Sale</button>
+    </form>
+  </div>
+
+</body>
+</html>
